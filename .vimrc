@@ -32,7 +32,7 @@ let g:Powerline_symbols = 'fancy'
 " File system explorer
 Bundle 'The-NERD-tree'
 let g:NERDTreeShowBookmarks=1
-let g:NERDTreeIgnore=['\.so$', '\.class$', '.\swp']
+let g:NERDTreeIgnore=['\.so$', '\.class$', '.\swp', '\.exe$', '\~$']
 map <leader>nt :NERDTreeToggle<cr>
 
 " Indention display
@@ -74,7 +74,7 @@ if has("gui_running")
   set t_Co=256
   set guitablabel=%M\ %t
 
-  set background=dark
+  set background=dark " {light, dark}
   colorscheme solarized
 endif
 
