@@ -12,12 +12,9 @@ let g:mapleader = ","
 " Copy/paste from system clipboard
 set clipboard=unnamed
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle 
+" Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -25,13 +22,24 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'The-NERD-Commenter'
+Bundle 'c.vim'
+Bundle 'snipMate'
+Bundle 'pyflakes.vim'
+Bundle 'mru.vim'
+Bundle 'python.vim'
+Bundle 'jsbeautify'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'Markdown-syntax'
+Bundle 'https://github.com/altercation/vim-colors-solarized'
+
 " Fancy status lines
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
 " File system explorer
 Bundle 'The-NERD-tree'
-let g:NERDTreeShowBookmarks=1
+let g:NERDTreShowBookmarks=1
 let g:NERDTreeIgnore=['\.so$', '\.class$', '.\swp', '\.exe$', '\~$']
 map <leader>nt :NERDTreeToggle<cr>
 
@@ -49,41 +57,26 @@ Bundle 'FuzzyFinder'
 Bundle 'L9'
 nmap <leader>fu :FufFile<cr>
 
-Bundle 'The-NERD-Commenter'
-Bundle 'c.vim'
-Bundle 'snipMate'
-Bundle 'mru.vim'
-Bundle 'pyflakes.vim'
-Bundle 'jsbeautify'
-Bundle 'Markdown-syntax'
-Bundle 'https://github.com/altercation/vim-colors-solarized'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Enable syntax highlighting
-syntax enable
-
-colorscheme torte
-set guifont=Monaco:h14
-
 if has("gui_running")
   set guioptions-=T
   set guioptions+=e
   set t_Co=256
   set guitablabel=%M\ %t
 
+  set guifont=Monaco:h14
   set background=dark " {light, dark}
   colorscheme solarized
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual configuration and ... 
+" Visual configuration and ...
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set utf-8 as standard encoding
-set fileencodings=utf-8,cp936,gbk,gb18030,big5,latin1
+set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,euc-jp,euc-kr,latin1
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -95,11 +88,14 @@ set writebackup
 " Indent
 set ai
 set si
+set ci
 
 " 1 tab == 2 spaces
 set shiftwidth=2
-set tabstop=2 " 
+set tabstop=2
 
+set softtabstop=2
+set smarttab
 set expandtab " use spaces intead of tabs
 set hlsearch " highligh the search result
 set nowrap " do not auto wrap lines
@@ -109,9 +105,26 @@ set vb t_vb= " turn off the alarm
 set cino=:0g0t0(sus " better indent
 set cc=81 " show a column at 81st character
 
+" Enable syntax highlighting
+syntax on
+
+" Enable filetype plugins
+"filetype off
+filetype plugin indent on
+
+highlight Tab ctermbg=lightblue guibg=lightblue
+call matchadd("Tab", "\t")
+
+highlight WhitespaceEOL ctermbg=red guibg=red
+call matchadd("WhitespaceEOL", "\\s\\+$")
+
+au BufRead,BufNewFile *.sml setfiletype sml
+au FileType python set shiftwidth=2
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mapping 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <C-I> A
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -120,7 +133,7 @@ nmap <leader>e :source $HOME/.vimrc<cr>
 " Beatify the code
 nmap <F3> ggVG=
 map <F5> :call CompileAndRun()<cr>
-"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and Run 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -145,14 +158,15 @@ function! CompileAndRun()
         \ 'c':            './a.out',
         \ 'cpp':          './a.out',
         \
-        \ 'sml':          'sml %',
-        \ 'haskell':      'ghci %',
-        \ 'lisp':         'clisp -i %',
-        \ 'python':       'python %',
-        \ 'ruby':         'ruby %',
-        \ 'javascript':   'node %',
+        \ 'sml':          'sml "%"',
+        \ 'haskell':      'ghci "%"',
+        \ 'lisp':         'clisp -i "%"',
+        \ 'python':       'python "%"',
+        \ 'ruby':         'ruby "%"',
+        \ 'javascript':   'node "%"',
+        \ 'coffee':       'coffee "%"',
         \
-        \ 'php':          'php %',
+        \ 'php':          'php "%"',
         \ }
   let run = DictGet(runDict, &filetype, 'false')
 
@@ -162,3 +176,4 @@ function! CompileAndRun()
   execute 'w'
   execute '! ' . compileAndRun
 endfunction
+
