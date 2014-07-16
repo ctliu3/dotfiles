@@ -33,6 +33,20 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'Markdown-syntax'
 Bundle 'https://github.com/altercation/vim-colors-solarized'
 
+" Exuberant Ctags
+"set tags=./tags,tags;$HOME
+
+" Go
+Bundle "https://github.com/fatih/vim-go"
+let g:go_disable_autoinstall = 1
+let g:go_fmt_autosave = 0
+
+" Tag Bar
+Bundle "https://github.com/majutsushi/tagbar"
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_width = 30
+
 " Fancy status lines
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
@@ -158,6 +172,7 @@ function! CompileAndRun()
         \ 'c':            './a.out',
         \ 'cpp':          './a.out',
         \
+        \ 'go':           'go run %',
         \ 'sml':          'sml "%"',
         \ 'haskell':      'ghci "%"',
         \ 'lisp':         'clisp -i "%"',
