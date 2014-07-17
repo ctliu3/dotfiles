@@ -81,6 +81,7 @@ if has("gui_running")
   set guitablabel=%M\ %t
 
   set guifont=Monaco:h14
+  set guifontwide=Microsoft\ YaHei:h14
   set background=dark " {light, dark}
   colorscheme solarized
 endif
@@ -93,7 +94,7 @@ endif
 set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,euc-jp,euc-kr,latin1
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set ffs=mac,unix,dos
 
 " Trun backup on
 set backup
