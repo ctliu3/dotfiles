@@ -18,6 +18,7 @@ set clipboard=unnamed
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype off
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=$GOROOT/misc/vim
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -31,25 +32,59 @@ Bundle 'python.vim'
 Bundle 'jsbeautify'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'Markdown-syntax'
+Bundle 'twilight256.vim'
 Bundle 'https://github.com/altercation/vim-colors-solarized'
+Bundle 'nsf/gocode', {'rtp': 'vim/'}
+
+" YouCompleteMe
+Bundle 'Valloric/YouCompleteMe'
+"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = 0
 
 " Exuberant Ctags
 "set tags=./tags,tags;$HOME
 
 " Go
-Bundle "https://github.com/fatih/vim-go"
-let g:go_disable_autoinstall = 1
-let g:go_fmt_autosave = 0
+"Bundle 'https://github.com/fatih/vim-go'
+"let g:go_disable_autoinstall=0
+"let g:go_fmt_autosave=0
 
 " Tag Bar
 Bundle "https://github.com/majutsushi/tagbar"
 nmap <F8> :TagbarToggle<CR>
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
-let g:tagbar_width = 30
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_width=30
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 " Fancy status lines
 Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols='fancy'
 
 " File system explorer
 Bundle 'The-NERD-tree'
@@ -59,12 +94,12 @@ map <leader>nt :NERDTreeToggle<cr>
 
 " Indention display
 Bundle 'Yggdroot/indentLine'
-let g:indentLine_color_term = 239
-let g:indentLine_char = '|'
+let g:indentLine_color_term=239
+let g:indentLine_char='|'
 
 " Indent guide
 Bundle 'https://github.com/nathanaelkane/vim-indent-guides'
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size=1
 
 " Finder
 Bundle 'FuzzyFinder'
@@ -74,6 +109,7 @@ nmap <leader>fu :FufFile<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme twilight256
 if has("gui_running")
   set guioptions-=T
   set guioptions+=e
@@ -94,7 +130,7 @@ endif
 set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,euc-jp,euc-kr,latin1
 
 " Use Unix as the standard file type
-set ffs=mac,unix,dos
+set ffs=unix,dos,mac
 
 " Trun backup on
 set backup
@@ -119,6 +155,11 @@ set autochdir " set the file browser directory as the current directory
 set vb t_vb= " turn off the alarm
 set cino=:0g0t0(sus " better indent
 set cc=81 " show a column at 81st character
+set ignorecase " ignore case during searching
+set nobackup " no backup files
+"augroup golang
+  "au BufRead,BufEnter $GOPATH/* sts=2 sw=2
+"augroup END
 
 " Enable syntax highlighting
 syntax on
@@ -137,7 +178,7 @@ au BufRead,BufNewFile *.sml setfiletype sml
 au FileType python set shiftwidth=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Key Mapping 
+" Key Mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <C-I> A
 
@@ -150,7 +191,7 @@ nmap <F3> ggVG=
 map <F5> :call CompileAndRun()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Compile and Run 
+" Compile and Run
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! DictGet(dict, key, default)
