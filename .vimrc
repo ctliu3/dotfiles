@@ -206,13 +206,15 @@ endfunction
 function! CompileAndRun()
   let compileDict = {
         \ 'c':            'gcc -O2 -Wall -Wextra -lm -DCTLIU "%"',
-        \ 'cpp':          'g++ -std=c++0x -O2 -Wall -Wextra -DCTLIU "%"'
+        \ 'cpp':          'g++ -std=c++0x -O2 -Wall -Wextra -DCTLIU "%"',
+        \ 'pascal':       'fpc -So -XS %'
         \ }
   let compile = DictGet(compileDict, &filetype, 'true')
 
   let runDict = {
         \ 'c':            './a.out',
         \ 'cpp':          './a.out',
+        \ 'pascal':       './%<',
         \
         \ 'go':           'go run %',
         \ 'sml':          'sml "%"',
