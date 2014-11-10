@@ -31,15 +31,13 @@ Bundle 'mru.vim'
 Bundle 'python.vim'
 Bundle 'jsbeautify'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'Markdown-syntax'
 Bundle 'twilight256.vim'
 Bundle 'https://github.com/altercation/vim-colors-solarized'
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
 
 " YouCompleteMe
 Bundle 'Valloric/YouCompleteMe'
-"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 " Exuberant Ctags
 "set tags=./tags,tags;$HOME
