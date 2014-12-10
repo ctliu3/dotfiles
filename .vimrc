@@ -34,6 +34,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'twilight256.vim'
 Bundle 'https://github.com/altercation/vim-colors-solarized'
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
+Bundle 'derekwyatt/vim-scala'
 
 " YouCompleteMe
 Bundle 'Valloric/YouCompleteMe'
@@ -224,6 +225,7 @@ function! CompileAndRun()
         \ 'coffee':       'coffee "%"',
         \
         \ 'php':          'php "%"',
+        \ 'scala':        'scala "%"',
         \ }
   let run = DictGet(runDict, &filetype, 'false')
 
