@@ -1,1 +1,3 @@
-configuration under mac os x
+Dotfiles
+===
+Configurations under Mac OS.

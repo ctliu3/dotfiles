@@ -42,9 +42,18 @@ NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'tomasr/molokai'
+"NeoBundle 'ervandew/screen'
+NeoBundle 'mileszs/ack.vim'
+
+" tell filetype
+NeoBundle 'wlangstroth/vim-racket'
 
 " Auto syntactic check
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 
 " YouCompleteMe
 "NeoBundle 'Valloric/YouCompleteMe'
@@ -231,6 +240,7 @@ function! CompileAndRun()
   let compileDict = {
         \ 'c':            'gcc -O2 -Wall -Wextra -lm -DCTLIU "%"',
         \ 'cpp':          'g++ -std=c++0x -O2 -Wall -Wextra -DCTLIU "%"',
+        \ 'cuda':         'nvcc "%"',
         \ 'pascal':       'fpc -So -XS %'
         \ }
   let compile = DictGet(compileDict, &filetype, 'true')
@@ -238,14 +248,17 @@ function! CompileAndRun()
   let runDict = {
         \ 'c':            './a.out',
         \ 'cpp':          './a.out',
+        \ 'cuda':         './a.out',
         \ 'pascal':       './%<',
-        \
         \ 'go':           'go run %',
+        \
         \ 'sml':          'sml "%"',
-        \ 'haskell':      'ghci "%"',
+        \ 'haskell':      'runghc "%"',
         \ 'lisp':         'clisp -i "%"',
+        \ 'clojure':      'lein exec "%"',
         \ 'scheme':       'scheme < "%" --quiet',
-        \ 'python':       'python "%"',
+        \
+        \ 'python':       'python3 "%"',
         \ 'ruby':         'ruby "%"',
         \ 'javascript':   'node "%"',
         \ 'coffee':       'coffee "%"',
