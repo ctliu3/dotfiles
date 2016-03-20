@@ -29,7 +29,6 @@ set rtp+=$GOROOT/misc/vim
 call neobundle#begin(expand('~/.vim/NeoBundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'The-NERD-Commenter'
 "NeoBundle 'c.vim'
 NeoBundle 'snipMate'
 NeoBundle 'mru.vim'
@@ -45,13 +44,17 @@ NeoBundle 'tomasr/molokai'
 "NeoBundle 'ervandew/screen'
 NeoBundle 'mileszs/ack.vim'
 
+NeoBundle 'The-NERD-Commenter'
+let NERDSpaceDelims = 1
+
 " tell filetype
 NeoBundle 'wlangstroth/vim-racket'
 
 " Auto syntactic check
-"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_python_flake8_post_args='--ignore=E111'
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 
@@ -142,7 +145,7 @@ set t_Co=256
 "set background=dark
 "colorscheme twilight256
 
-colorscheme monokai
+colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 
