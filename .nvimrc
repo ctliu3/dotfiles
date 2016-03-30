@@ -166,6 +166,7 @@ endif
 
 " Set utf-8 as standard encoding
 set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,euc-jp,euc-kr,latin1
+set encoding=utf-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -211,7 +212,7 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 call matchadd("WhitespaceEOL", "\\s\\+$")
 
 au BufRead,BufNewFile *.sml setfiletype sml
-au FileType python set shiftwidth=2
+au FileType python set shiftwidth=4
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mapping
