@@ -196,6 +196,7 @@ set cino=:0g0t0(sus " better indent
 set cc=81 " show a column at 81st character
 set ignorecase " ignore case during searching
 set nobackup " no backup files
+set backspace=2 " use backspace key in vim
 "augroup golang
   "au BufRead,BufEnter $GOPATH/* sts=2 sw=2
 "augroup END
