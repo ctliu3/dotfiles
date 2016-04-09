@@ -166,6 +166,7 @@ endif
 
 " Set utf-8 as standard encoding
 set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,euc-jp,euc-kr,latin1
+set encoding=utf-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -195,6 +196,7 @@ set cino=:0g0t0(sus " better indent
 set cc=81 " show a column at 81st character
 set ignorecase " ignore case during searching
 set nobackup " no backup files
+set backspace=2 " use backspace key in vim
 "augroup golang
   "au BufRead,BufEnter $GOPATH/* sts=2 sw=2
 "augroup END
@@ -211,7 +213,7 @@ highlight WhitespaceEOL ctermbg=red guibg=red
 call matchadd("WhitespaceEOL", "\\s\\+$")
 
 au BufRead,BufNewFile *.sml setfiletype sml
-au FileType python set shiftwidth=2
+au FileType python set shiftwidth=4
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mapping
