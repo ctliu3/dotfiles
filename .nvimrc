@@ -265,6 +265,7 @@ function! CompileAndRun()
         \ 'ruby':         'ruby "%"',
         \ 'javascript':   'node "%"',
         \ 'coffee':       'coffee "%"',
+        \ 'lua':          'lua "%"',
         \
         \ 'php':          'php "%"',
         \ 'scala':        'scala "%"',
