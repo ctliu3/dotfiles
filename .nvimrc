@@ -43,6 +43,7 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'tomasr/molokai'
 "NeoBundle 'ervandew/screen'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'elixir-lang/vim-elixir' " support elixir
 
 NeoBundle 'The-NERD-Commenter'
 let NERDSpaceDelims = 1
@@ -262,6 +263,7 @@ function! CompileAndRun()
         \ 'lisp':         'clisp -i "%"',
         \ 'clojure':      'lein exec "%"',
         \ 'scheme':       'scheme < "%" --quiet',
+        \ 'elixir':       'elixir "%"',
         \
         \ 'python':       'python3 "%"',
         \ 'ruby':         'ruby "%"',
