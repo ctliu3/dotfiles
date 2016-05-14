@@ -18,4 +18,12 @@ do
   fi
 done
 
+
+plugin_dir=$HOME/dotfiles/.oh-my-zsh/custom/plugins
+github=https://github.com
+[ ! -d $plugin_dir/zsh-autosuggestions ] \
+  && git clone $github/zsh-users/zsh-autosuggestions.git $plugin_dir/zsh-autosuggestions
+[ ! -d $plugin_dir/zsh-syntax-highlighting ] \
+  && git clone $github/zsh-users/zsh-syntax-highlighting.git $plugin_dir/zsh-syntax-highlighting
+
 cd -
