@@ -1,3 +1,2 @@
-Dotfiles
+dotfiles
 ===
-Configurations under Mac OS.
