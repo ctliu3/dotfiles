@@ -41,3 +41,4 @@ export NVM_DIR=$HOME/.nvm
 
 # Other config
 export VISUAL=vim
+export EDITOR=$VISUAL
