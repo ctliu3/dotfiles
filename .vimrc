@@ -18,6 +18,20 @@ let g:mapleader = ","
 " Copy/paste from system clipboard
 set clipboard=unnamed
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Hightlight the redundant tabs or spaces
+func! HightlightBadSpace()
+  highlight Tab ctermbg=lightblue guibg=lightblue
+  call matchadd("Tab", "\t")
+
+  highlight WhitespaceEOL ctermbg=red guibg=red
+  call matchadd("WhitespaceEOL", "\\s\\+$")
+endfunc
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NeoNeoBundle.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -45,6 +59,8 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'elixir-lang/vim-elixir' " support elixir
 
+NeoBundle 'davidhalter/jedi-vim'
+
 NeoBundle 'The-NERD-Commenter'
 let NERDSpaceDelims = 1
 
@@ -68,9 +84,10 @@ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 "set tags=./tags,tags;$HOME
 
 " Go
-"NeoBundle 'https://github.com/fatih/vim-go'
-"let g:go_disable_autoinstall=0
-"let g:go_fmt_autosave=0
+" :GoInstallBinaries to install binaries to $GOBIN or $GOPATH/bin
+NeoBundle 'fatih/vim-go'
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Tag Bar
 NeoBundle "https://github.com/majutsushi/tagbar"
@@ -139,12 +156,6 @@ NeoBundleCheck
 " Color and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
-"let g:solarized_termcolors=256
-"let g:solarized_contrast='low'
-"let g:solarized_visibility='low'
-"colorscheme solarized
-"set background=dark
-"colorscheme twilight256
 
 colorscheme molokai
 let g:molokai_original = 1
@@ -198,23 +209,20 @@ set cc=81 " show a column at 81st character
 set ignorecase " ignore case during searching
 set nobackup " no backup files
 set backspace=2 " use backspace key in vim
-"augroup golang
-  "au BufRead,BufEnter $GOPATH/* sts=2 sw=2
-"augroup END
+" augroup golang
+  " au BufRead,BufEnter $GOPATH/* sts=2 sw=2
+" augroup END
 
 " Enable syntax highlighting
 syntax on
 
 " Enable filetype plugins
 
-highlight Tab ctermbg=lightblue guibg=lightblue
-call matchadd("Tab", "\t")
-
-highlight WhitespaceEOL ctermbg=red guibg=red
-call matchadd("WhitespaceEOL", "\\s\\+$")
-
-au BufRead,BufNewFile *.sml setfiletype sml
+augroup hightspace
+  au! BufEnter,BufWritePost * if &ft != "go" | :call HightlightBadSpace() | endif
+augroup END
 au FileType python set shiftwidth=4
+au BufRead,BufNewFile *.sml setfiletype sml
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mapping
@@ -233,16 +241,16 @@ map <F5> :call CompileAndRun()<cr>
 " Compile and Run
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! DictGet(dict, key, default)
+func! DictGet(dict, key, default)
   if has_key(a:dict, a:key)
     let value = a:dict[a:key]
   else
     let value = a:default
   endif
   return substitute(value, '\s%.\b\s', "'\\0'", 'g')
-endfunction
+endfunc
 
-function! CompileAndRun()
+func! CompileAndRun()
   let compileDict = {
         \ 'c':            'gcc -O2 -Wall -Wextra -lm -DCTLIU "%"',
         \ 'cpp':          'g++ -std=c++0x -O2 -Wall -Wextra -DCTLIU "%"',
@@ -281,5 +289,5 @@ function! CompileAndRun()
 
   execute 'w'
   execute '! ' . compileAndRun
-endfunction
+endfunc
 
