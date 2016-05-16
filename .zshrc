@@ -35,6 +35,8 @@ safe_export_path $HOME/.rvm/bin
 safe_export_path "/Applications/Racket v6.2.1/bin"
 
 safe_source $HOME/dotfiles/.zsh/alias.zsh
+# LOAD LOCAL ZSH CONFIG !!!
+safe_source $HOME/dotfiles/.zsh/alias_local.zsh
 
 export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
