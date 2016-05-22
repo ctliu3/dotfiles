@@ -20,7 +20,10 @@ done
 
 github=https://github.com
 # download .oh-my-zsh
-[[ ! -d .oh-my-zsh ]] && git clone $github/robbyrussell/oh-my-zsh.git .oh-my-zsh
+if [[ -d $HOME/dotfiles/.oh-my-zsh ]]; then
+  rm -dfr $HOME/dotfiles/.oh-my-zsh
+fi
+git clone $github/robbyrussell/oh-my-zsh.git $HOME/dotfiles/.oh-my-zsh
 
 # download plugins for tmux
 tmux_plugins=(tpm tmux-copycat tmux-resurrect tmux-yank)
