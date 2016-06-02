@@ -23,6 +23,8 @@ safe_source $ZSH/oh-my-zsh.sh
 
 safe_source $HOME/dotfiles/.zshrc.local
 
+alias gitlog="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(blue)%d%Creset %C(white bold)%s%Creset %C(white dim)(by %an %ar)%Creset'"
+
 # other config
 export VISUAL=vim
 export EDITOR=$VISUAL
