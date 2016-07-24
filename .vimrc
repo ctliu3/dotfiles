@@ -224,7 +224,7 @@ syntax on
 
 " Enable filetype plugins
 
-augroup hightspace
+augroup hlspace
   au! BufReadPost * if &ft != "go" | :call HightlightBadSpace() | endif
 augroup END
 au FileType python set shiftwidth=4
