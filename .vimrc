@@ -58,14 +58,15 @@ NeoBundle 'tomasr/molokai'
 "NeoBundle 'ervandew/screen'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'elixir-lang/vim-elixir' " support elixir
-
-NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'davidhalter/jedi-vim' " python plugin
 
 NeoBundle 'The-NERD-Commenter'
 let NERDSpaceDelims = 1
 
 " tell filetype
 NeoBundle 'wlangstroth/vim-racket'
+
+NeoBundle 'kien/ctrlp.vim'
 
 " Auto syntactic check
 NeoBundle 'scrooloose/syntastic'
@@ -84,6 +85,11 @@ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 "set tags=./tags,tags;$HOME
 
 " Go
+NeoBundle 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_smart_case = 1
+
 " :GoInstallBinaries to install binaries to $GOBIN or $GOPATH/bin
 NeoBundle 'fatih/vim-go'
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
@@ -219,7 +225,7 @@ syntax on
 " Enable filetype plugins
 
 augroup hightspace
-  au! BufEnter,BufWritePost * if &ft != "go" | :call HightlightBadSpace() | endif
+  au! BufReadPost * if &ft != "go" | :call HightlightBadSpace() | endif
 augroup END
 au FileType python set shiftwidth=4
 au BufRead,BufNewFile *.sml setfiletype sml
