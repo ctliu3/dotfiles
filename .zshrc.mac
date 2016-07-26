@@ -1,0 +1,23 @@
+# Used for mac
+# Go path
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/Allblue/Codes/gospace
+
+safe_export_path $HOME/local/bin
+safe_export_path /usr/bin
+safe_export_path /usr/local/bin
+safe_export_path /bin
+safe_export_path /usr/local/sbin
+safe_export_path $HOME/bin
+safe_export_path $GOPATH/bin
+safe_export_path $HOME/Library/Haskell/bin
+safe_export_path /usr/local/opt/scala/bin
+safe_export_path $HOME/Allblue/Tools/activator
+
+# Added by the Heroku Toolbelt
+safe_export_path /usr/local/heroku/bin
+safe_export_path $HOME/.rvm/bin
+safe_export_path "/Applications/Racket v6.2.1/bin"
+
+export NVM_DIR=$HOME/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

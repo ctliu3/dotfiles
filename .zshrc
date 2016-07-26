@@ -21,7 +21,12 @@ safe_source $ZSH/oh-my-zsh.sh
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && \
   source $HOME/.autojump/etc/profile.d/autojump.sh
 
-safe_source $HOME/dotfiles/.zshrc.local
+if [ `uname` = "Linux" ]; then
+  safe_source $HOME/dotfiles/.zshrc.linux
+elif [ `uname` = "Darwin" ]; then
+  safe_source $HOME/dotfiles/.zshrc.mac
+fi
+
 
 alias gitlog="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(blue)%d%Creset %C(white bold)%s%Creset %C(white dim)(by %an %ar)%Creset'"
 

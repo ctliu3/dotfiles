@@ -1,0 +1,15 @@
+# Used for linux
+# Go path
+export GOROOT=$HOME/local/go
+export GOPATH=$HOME/allblue/gospace
+
+safe_export_path $HOME/.local/share
+safe_export_path $HOME/bin
+safe_export_path $HOME/local/bin
+safe_export_path $GOROOT/bin
+safe_export_path $GOPATH/bin
+
+alias vim=$HOME/local/bin/vim
+alias vi=vim
+alias py2="unset PYTHONPATH && . ~/.py2env/bin/activate"
+alias py3="deactivate; export PYTHONPATH=$HOME/allblue:$HOME/allblue/pylib export LD_LIBRARY_PATH=$HOME/allblue/clib"
