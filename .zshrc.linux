@@ -13,3 +13,4 @@ alias vim=$HOME/local/bin/vim
 alias vi=vim
 alias py2="unset PYTHONPATH && . ~/.py2env/bin/activate"
 alias py3="deactivate; export PYTHONPATH=$HOME/allblue:$HOME/allblue/pylib export LD_LIBRARY_PATH=$HOME/allblue/clib"
+alias ssh-agent-cyg='eval `ssh-agent -s`'
