@@ -29,6 +29,7 @@ fi
 
 
 alias gitlog="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(blue)%d%Creset %C(white bold)%s%Creset %C(white dim)(by %an %ar)%Creset'"
+alias pyhttp="python -m SimpleHTTPServer 20008"
 
 # other config
 export VISUAL=vim
