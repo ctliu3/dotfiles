@@ -46,7 +46,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "NeoBundle 'c.vim'
 NeoBundle 'snipMate'
 NeoBundle 'mru.vim'
+let MRU_Auto_Close=1
+
 NeoBundle 'python.vim'
+NeoBundle 'pyflakes.vim'
 NeoBundle 'jsbeautify'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'twilight256.vim'
@@ -59,6 +62,8 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'elixir-lang/vim-elixir' " support elixir
 NeoBundle 'davidhalter/jedi-vim' " python plugin
+NeoBundle 'godlygeek/tabular'
+" NeoBundle 'plasticboy/vim-markdown'
 
 NeoBundle 'The-NERD-Commenter'
 let NERDSpaceDelims = 1
