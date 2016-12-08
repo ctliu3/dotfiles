@@ -13,4 +13,9 @@ alias vim=$HOME/local/bin/vim
 alias vi=vim
 alias py2="unset PYTHONPATH && . ~/.py2env/bin/activate"
 alias py3="deactivate; export PYTHONPATH=$HOME/allblue:$HOME/allblue/pylib export LD_LIBRARY_PATH=$HOME/allblue/clib"
+alias py3env="deactivate; . ~/.py3env/bin/activate; export PYTHONPATH=$HOME/allblue:$HOME/allblue/pylib export LD_LIBRARY_PATH=$HOME/allblue/clib"
+alias ana2="deactivate; export PATH=/home/liuchundian/anaconda2/bin:$PATH"
+alias mxnet-env="export LD_LIBRARY_PATH=/home/liuchundian/allblue/classify_serving/third_party/cuda-7.0_cudnn-v5.0.5/lib64:$LD_LIBRARY_PATH"
 alias ssh-agent-cyg='eval `ssh-agent -s`'
+
+. /home/liuchundian/allblue/torch/install/bin/torch-activate
