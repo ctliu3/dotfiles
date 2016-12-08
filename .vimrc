@@ -78,6 +78,9 @@ NeoBundle 'scrooloose/syntastic'
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_python_checkers = ['pylint']
 " let g:syntastic_python_flake8_post_args='--ignore=E111'
+let g:syntastic_python_pylint_post_args='--disable=C0111,R0912,E0611'
+" pylint codes:
+" http://pylint-messages.wikidot.com/all-codes
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 
