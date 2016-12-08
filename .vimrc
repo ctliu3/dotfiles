@@ -49,7 +49,7 @@ NeoBundle 'mru.vim'
 let MRU_Auto_Close=1
 
 NeoBundle 'python.vim'
-NeoBundle 'pyflakes.vim'
+" NeoBundle 'pyflakes.vim'
 NeoBundle 'jsbeautify'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'twilight256.vim'
@@ -76,8 +76,8 @@ NeoBundle 'kien/ctrlp.vim'
 " Auto syntactic check
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_error_symbol = '✗'
-let g:syntastic_python_checkers = ['pyflakes']
-let g:syntastic_python_flake8_post_args='--ignore=E111'
+let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_python_flake8_post_args='--ignore=E111'
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 
