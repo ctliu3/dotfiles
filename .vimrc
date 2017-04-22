@@ -64,6 +64,7 @@ NeoBundle 'elixir-lang/vim-elixir' " support elixir
 NeoBundle 'davidhalter/jedi-vim' " python plugin
 NeoBundle 'godlygeek/tabular'
 " NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'rust-lang/rust.vim'
 
 NeoBundle 'The-NERD-Commenter'
 let NERDSpaceDelims = 1

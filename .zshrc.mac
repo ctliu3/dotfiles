@@ -13,6 +13,7 @@ safe_export_path $GOPATH/bin
 safe_export_path $HOME/Library/Haskell/bin
 safe_export_path /usr/local/opt/scala/bin
 safe_export_path $HOME/Allblue/Tools/activator
+safe_export_path $HOME/.cargo/bin
 
 # Added by the Heroku Toolbelt
 safe_export_path /usr/local/heroku/bin
