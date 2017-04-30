@@ -13,9 +13,9 @@ function safe_source() {
 export ARCHFLAGS="-arch x86_64"
 
 # zsh env
-ZSH=$HOME/dotfiles/.oh-my-zsh
+ZSH=$HOME/dotfiles/zsh/oh-my-zsh
 ZSH_THEME="candy" # $ZSH/themes/
-ZSH_CUSTOM=$ZSH/custom
+ZSH_CUSTOM=$ZSH/../oh-my-zsh-custom/
 plugins=(git d autojump zsh-autosuggestions zsh-syntax-highlighting)
 safe_source $ZSH/oh-my-zsh.sh
 
@@ -27,7 +27,6 @@ if [ `uname` = "Linux" ]; then
 elif [ `uname` = "Darwin" ]; then
   safe_source $HOME/dotfiles/.zshrc.mac
 fi
-
 
 alias gitlog="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(blue)%d%Creset %C(white bold)%s%Creset %C(white dim)(by %an %ar)%Creset'"
 alias pyhttp="python -m SimpleHTTPServer 20008"
