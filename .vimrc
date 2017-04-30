@@ -77,13 +77,14 @@ NeoBundle 'kien/ctrlp.vim'
 " Auto syntactic check
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_error_symbol = '✗'
-let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_python_flake8_post_args='--ignore=E111'
+" Optional python checkers: pylint
+" pylint is too strict, it will slow down your coding.
+" pylint codes: http://pylint-messages.wikidot.com/all-codes
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_post_args='--ignore=E501'
 let g:syntastic_python_pylint_post_args='--disable=C0111,R0912,E0611'
-" pylint codes:
-" http://pylint-messages.wikidot.com/all-codes
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
+" let g:syntastic_cpp_compiler = 'g++'
+" let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 
 " YouCompleteMe
 "NeoBundle 'Valloric/YouCompleteMe'
@@ -160,6 +161,9 @@ let g:indent_guides_guide_size=1
 NeoBundle 'FuzzyFinder'
 NeoBundle 'L9'
 nmap <leader>fu :FufFile<cr>
+
+NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+NeoBundle 'junegunn/fzf.vim'
 
 call neobundle#end()
 

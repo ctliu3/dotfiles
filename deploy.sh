@@ -40,4 +40,8 @@ plugin_dir=$HOME/dotfiles/.oh-my-zsh/custom/plugins
 [ ! -d $plugin_dir/zsh-syntax-highlighting ] \
   && git clone $github/zsh-users/zsh-syntax-highlighting.git $plugin_dir/zsh-syntax-highlighting
 
+# Install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 cd -

@@ -1,8 +1,9 @@
 export PYTHONPATH=
+export PATH=/usr/local/bin:/usr/bin:/bin
 export LC_ALL=en_US.UTF-8
 
 function safe_export_path() {
-  [[ -d $1 ]] && export PATH=$1:$PATH
+  [[ -d $1 ]] && export PATH=$PATH:$1
 }
 function safe_source() {
   [[ -s $1 ]] && source $1
@@ -34,3 +35,5 @@ alias pyhttp="python -m SimpleHTTPServer 20008"
 # other config
 export VISUAL=vim
 export EDITOR=$VISUAL
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
