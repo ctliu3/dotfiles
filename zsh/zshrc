@@ -9,10 +9,10 @@ function safe_source() {
   [[ -s $1 ]] && source $1
 }
 
-# sys env
+# Sys env
 export ARCHFLAGS="-arch x86_64"
 
-# zsh env
+# ZSH env
 ZSH=$HOME/dotfiles/zsh/oh-my-zsh
 ZSH_THEME="candy" # $ZSH/themes/
 ZSH_CUSTOM=$ZSH/../oh-my-zsh-custom/
@@ -23,13 +23,12 @@ safe_source $ZSH/oh-my-zsh.sh
   source $HOME/.autojump/etc/profile.d/autojump.sh
 
 if [ `uname` = "Linux" ]; then
-  safe_source $HOME/dotfiles/.zshrc.linux
+  safe_source $HOME/dotfiles/zsh/zshrc_linux
 elif [ `uname` = "Darwin" ]; then
-  safe_source $HOME/dotfiles/.zshrc.mac
+  safe_source $HOME/dotfiles/zsh/zshrc_mac
 fi
 
 alias gitlog="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(blue)%d%Creset %C(white bold)%s%Creset %C(white dim)(by %an %ar)%Creset'"
-alias pyhttp="python -m SimpleHTTPServer 20008"
 
 # other config
 export VISUAL=vim

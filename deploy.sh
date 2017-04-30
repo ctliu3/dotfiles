@@ -1,27 +1,25 @@
-# cat << EOT >> test
-# set -g status-bg green
-# unbind C-q
-# set -g prefix C-a
-# bind C-a send-prefix
-# EOT
+#!/bin/bash
 
 cd $HOME
 
-all_rc=(.zshrc .vimrc)
+# Make soft links for configs.
+declare -A configs=(
+  ["zsh/zshrc"]="$HOME/.zshrc"
+  ["vim/vimrc"]="$HOME/.vimrc"
+  ["tmux/tmux.conf"]="$HOME/.tmux.conf"
+)
 
-for rc in {$all_rc[@]};
-do
-  if [[ -f $rc ]]; then
-    cp -v $rc $rc.bak
-    rm $rc
-    ln -s dotfiles/$rc $rc
-  fi
+for source in "${!configs[@]}"; do
+  dest=${configs[$source]}
+  cp -v $dest $dest.bak
+  rm $dest
+  ln -s dotfiles/$source $dest
 done
 
-github=https://github.com
-
 # Install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+if [ ! -f $file ]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+fi
 
 cd -
