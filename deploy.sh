@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Download the submodules
+git submodule init
+git submodule update
+
+# Setup NeoBundle
+mkdir p $HOME/.vim/bundle
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
 cd $HOME
 
 # Make soft links for configs.
