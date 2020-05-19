@@ -5,7 +5,7 @@ git submodule init
 git submodule update
 
 # Setup NeoBundle
-mkdir p $HOME/.vim/bundle
+mkdir -p $HOME/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 cd $HOME
